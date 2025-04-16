@@ -1,27 +1,32 @@
 
 import { ArrowUpRight } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function PortfolioSection() {
   const portfolioItems = [
     {
       title: "E-Commerce Platform",
       category: "Web Development",
-      description: "A full-featured online store with seamless checkout and inventory management."
+      description: "A full-featured online store with seamless checkout and inventory management.",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1400&q=80"
     },
     {
       title: "Brand Redesign Campaign",
       category: "Digital Marketing",
-      description: "Complete visual identity refresh that increased brand recognition by 45%."
+      description: "Complete visual identity refresh that increased brand recognition by 45%.",
+      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?auto=format&fit=crop&w=1400&q=80"
     },
     {
       title: "Fitness Tracking App",
       category: "Mobile Development",
-      description: "Cross-platform mobile application for tracking workouts and nutrition."
+      description: "Cross-platform mobile application for tracking workouts and nutrition.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80"
     },
     {
       title: "SaaS Dashboard",
       category: "UI/UX Design",
-      description: "Intuitive interface design for a cloud-based project management tool."
+      description: "Intuitive interface design for a cloud-based project management tool.",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80"
     }
   ];
 
@@ -35,37 +40,46 @@ export function PortfolioSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {portfolioItems.map((item, index) => (
-            <div 
-              key={index} 
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-nexora-blue to-nexora-purple rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative p-6 h-full flex flex-col">
-                <div className="mb-4">
-                  <span className="inline-block bg-nexora-light text-nexora-dark px-3 py-1 rounded-full text-sm font-medium">
-                    {item.category}
-                  </span>
+        <Carousel className="w-full max-w-5xl mx-auto">
+          <CarouselContent>
+            {portfolioItems.map((item, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
+                <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-nexora-dark shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-nexora-blue to-nexora-purple rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                  <div className="relative p-6 h-full flex flex-col">
+                    <div className="mb-4 aspect-video overflow-hidden rounded-lg">
+                      <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <span className="inline-block bg-nexora-light dark:bg-nexora-dark/50 text-nexora-dark dark:text-nexora-light px-3 py-1 rounded-full text-sm font-medium">
+                        {item.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-nexora-gray mb-6">{item.description}</p>
+                    <div className="mt-auto">
+                      <a 
+                        href="#" 
+                        className="inline-flex items-center text-nexora-blue hover:text-nexora-purple transition-colors duration-300 font-medium"
+                      >
+                        View Project <ArrowUpRight size={16} className="ml-1" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-nexora-gray mb-6">{item.description}</p>
-                <div className="mt-auto">
-                  <a 
-                    href="#" 
-                    className="inline-flex items-center text-nexora-blue hover:text-nexora-purple transition-colors duration-300 font-medium"
-                  >
-                    View Project <ArrowUpRight size={16} className="ml-1" />
-                  </a>
-                </div>
-                <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-br from-nexora-blue/5 to-nexora-purple/5 rounded-bl-3xl"></div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-0" />
+          <CarouselNext className="right-0" />
+        </Carousel>
         
         <div className="text-center mt-12">
-          <a href="#" className="px-6 py-3 rounded-full font-medium border border-nexora-gray/20 hover:border-nexora-blue transition-colors duration-300 inline-flex items-center justify-center">
+          <a href="#" className="px-6 py-3 rounded-full font-medium border border-nexora-gray/20 hover:border-nexora-blue dark:border-nexora-gray/50 dark:hover:border-nexora-purple transition-colors duration-300 inline-flex items-center justify-center">
             View All Projects
           </a>
         </div>
