@@ -1,32 +1,36 @@
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function PortfolioSection() {
   const portfolioItems = [
     {
-      title: "E-Commerce Platform",
+      title: "Cell Healthcare",
+      category: "Healthcare Website",
+      description: "A complete healthcare platform with patient management and online consultation features.",
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1400&q=80",
+      url: "https://cellhealthcare.in/"
+    },
+    {
+      title: "InterTechub",
+      category: "Tech Platform",
+      description: "Modern technology platform offering integrated solutions for businesses.",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
+      url: "https://intertechub.com/"
+    },
+    {
+      title: "E-Commerce Solution",
       category: "Web Development",
       description: "A full-featured online store with seamless checkout and inventory management.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1400&q=80"
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1400&q=80",
+      url: "#"
     },
     {
       title: "Brand Redesign Campaign",
       category: "Digital Marketing",
       description: "Complete visual identity refresh that increased brand recognition by 45%.",
-      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?auto=format&fit=crop&w=1400&q=80"
-    },
-    {
-      title: "Fitness Tracking App",
-      category: "Mobile Development",
-      description: "Cross-platform mobile application for tracking workouts and nutrition.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80"
-    },
-    {
-      title: "SaaS Dashboard",
-      category: "UI/UX Design",
-      description: "Intuitive interface design for a cloud-based project management tool.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80"
+      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?auto=format&fit=crop&w=1400&q=80",
+      url: "#"
     }
   ];
 
@@ -36,7 +40,7 @@ export function PortfolioSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Portfolio</h2>
           <p className="text-nexora-gray text-lg">
-            Explore our recent projects and see how we've helped businesses achieve their goals.
+            Explore our recent projects and see how we've helped businesses achieve their goals through tech outsourcing and marketing solutions.
           </p>
         </div>
         
@@ -63,10 +67,12 @@ export function PortfolioSection() {
                     <p className="text-nexora-gray mb-6">{item.description}</p>
                     <div className="mt-auto">
                       <a 
-                        href="#" 
+                        href={item.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="inline-flex items-center text-nexora-blue hover:text-nexora-purple transition-colors duration-300 font-medium"
                       >
-                        View Project <ArrowUpRight size={16} className="ml-1" />
+                        Visit Website <ExternalLink size={16} className="ml-1" />
                       </a>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 
-import { Code, BarChart, Smartphone, Globe, PenTool, Share2 } from "lucide-react";
+import { Code, BarChart, Smartphone, Globe, PenTool, Share2, Database, BarChart3, Briefcase, LineChart } from "lucide-react";
 
 export function ServicesSection() {
   const services = [
@@ -16,28 +16,28 @@ export function ServicesSection() {
       image: "/images/digital-marketing.jpg"
     },
     {
-      icon: <Smartphone size={24} />,
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile applications designed for seamless user experiences.",
-      image: "/images/mobile-apps.jpg"
+      icon: <Briefcase size={24} />,
+      title: "Tech Outsourcing",
+      description: "End-to-end technical resource outsourcing solutions to help you scale without the overhead.",
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1400&q=80"
     },
     {
-      icon: <Globe size={24} />,
-      title: "SEO Optimization",
-      description: "Improve your search engine rankings and drive organic traffic to your website.",
-      image: "/images/seo-optimization.jpg"
+      icon: <Database size={24} />,
+      title: "Data Analytics",
+      description: "Extract valuable insights from your data to make informed business decisions and identify trends.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
     },
     {
-      icon: <PenTool size={24} />,
-      title: "Brand Design",
-      description: "Compelling visual identities that communicate your brand's values and connect with your audience.",
-      image: "/images/brand-design.jpg"
+      icon: <LineChart size={24} />,
+      title: "Business Analytics",
+      description: "Comprehensive analysis of your business performance metrics to guide strategic planning.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80"
     },
     {
       icon: <Share2 size={24} />,
-      title: "Social Media",
-      description: "Engaging social media strategies that build communities and enhance brand loyalty.",
-      image: "/images/social-media.jpg"
+      title: "Marketing Outsourcing",
+      description: "Skilled marketing professionals to handle your campaigns and content creation needs.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
     }
   ];
 
