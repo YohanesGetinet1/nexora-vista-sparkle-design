@@ -35,7 +35,6 @@ export function Header() {
             <a href="#services" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Services</a>
             <a href="#about" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">About Us</a>
             <a href="#portfolio" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Portfolio</a>
-            <a href="#testimonials" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Testimonials</a>
             <a href="#contact" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Contact</a>
           </nav>
 
@@ -67,7 +66,6 @@ export function Header() {
               <a href="#services" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Services</a>
               <a href="#about" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">About Us</a>
               <a href="#portfolio" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Portfolio</a>
-              <a href="#testimonials" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Testimonials</a>
               <a href="#contact" className="text-nexora-dark dark:text-nexora-light hover:text-nexora-blue dark:hover:text-nexora-blue font-medium transition-colors duration-300">Contact</a>
               <a href="#contact" className="btn-gradient px-6 py-2 rounded-full font-medium text-center">
                 Get Started
