@@ -61,6 +61,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				nexora: {
+					dark: '#0F172A',
+					blue: '#06B6D4',
+					purple: '#8B5CF6',
+					light: '#F8FAFC',
+					gray: '#64748B'
 				}
 			},
 			borderRadius: {
