@@ -18,7 +18,7 @@ export function HeroSection() {
               Transform Your Brand with <span className="text-gradient">Innovative</span> Solutions
             </h1>
             
-            <p className="text-nexora-gray text-lg md:text-xl">
+            <p className="text-nexora-gray dark:text-nexora-light/80 text-lg md:text-xl">
               We combine cutting-edge technology with strategic marketing to propel your business forward in the digital landscape.
             </p>
             
@@ -26,7 +26,7 @@ export function HeroSection() {
               <a href="#contact" className="btn-gradient px-6 py-3 rounded-full font-medium inline-flex items-center justify-center">
                 Get Started <ArrowRight size={18} className="ml-2" />
               </a>
-              <a href="#portfolio" className="px-6 py-3 rounded-full font-medium border border-nexora-gray/20 hover:border-nexora-blue transition-colors duration-300 inline-flex items-center justify-center">
+              <a href="#portfolio" className="px-6 py-3 rounded-full font-medium border border-nexora-gray/20 hover:border-nexora-blue transition-colors duration-300 inline-flex items-center justify-center dark:border-nexora-light/20 dark:hover:border-nexora-purple">
                 See Our Work
               </a>
             </div>
@@ -36,19 +36,19 @@ export function HeroSection() {
                 <div className="h-10 w-10 rounded-full bg-nexora-blue/10 flex items-center justify-center">
                   <MousePointer size={18} className="text-nexora-blue" />
                 </div>
-                <span className="font-medium">User-Focused</span>
+                <span className="font-medium dark:text-nexora-light">User-Focused</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="h-10 w-10 rounded-full bg-nexora-purple/10 flex items-center justify-center">
                   <Zap size={18} className="text-nexora-purple" />
                 </div>
-                <span className="font-medium">Fast Delivery</span>
+                <span className="font-medium dark:text-nexora-light">Fast Delivery</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="h-10 w-10 rounded-full bg-nexora-blue/10 flex items-center justify-center">
                   <BarChart3 size={18} className="text-nexora-blue" />
                 </div>
-                <span className="font-medium">Data-Driven</span>
+                <span className="font-medium dark:text-nexora-light">Data-Driven</span>
               </div>
             </div>
           </div>
@@ -56,8 +56,15 @@ export function HeroSection() {
           <div className="lg:w-1/2 relative">
             <div className="relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-nexora-blue to-nexora-purple rounded-2xl blur opacity-30"></div>
-              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-nexora-dark via-nexora-dark/90 to-nexora-dark/80 p-6 flex items-center justify-center">
+              <div className="relative bg-white dark:bg-nexora-dark/80 rounded-2xl shadow-xl overflow-hidden">
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src="/images/hero-image.jpg" 
+                    alt="Nexora Tech & Marketing" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-nexora-dark/60 via-nexora-dark/40 to-nexora-dark/20 flex items-center justify-center">
                   <div className="text-center">
                     <div className="text-4xl font-bold text-white">Nexora</div>
                     <div className="text-lg text-white/70 mt-2">Tech & Marketing</div>
