@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 
@@ -6,7 +5,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: ""
   });
 
@@ -20,7 +19,7 @@ export function ContactSection() {
     // In a real implementation, you would send the form data to your backend
     console.log("Form submitted:", formData);
     // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", message: "" });
     // Show success message or toast notification
     alert("Thanks for your message! We'll get back to you soon.");
   };
@@ -79,13 +78,13 @@ export function ContactSection() {
           </div>
           
           <div className="lg:w-1/2">
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <div className="bg-white dark:bg-nexora-dark/80 rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100 dark:border-gray-800">
               <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-nexora-gray mb-1">
-                    Your Name
+                    Your Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -93,47 +92,49 @@ export function ContactSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
                     placeholder="John Doe"
                     required
                   />
                 </div>
                 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-nexora-gray mb-1">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-nexora-gray mb-1">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
-                    placeholder="How can we help you?"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-nexora-gray mb-1">
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-nexora-gray mb-1">
+                      Phone Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
+                      placeholder="(555) 123-4567"
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-nexora-gray mb-1">
-                    Message
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -141,18 +142,24 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
-                    placeholder="Your message here..."
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-nexora-blue focus:ring-1 focus:ring-nexora-blue transition-colors duration-300"
+                    placeholder="Tell us about your project or inquiry..."
                     required
                   ></textarea>
                 </div>
                 
-                <button 
-                  type="submit" 
-                  className="btn-gradient px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center w-full"
-                >
-                  Send Message <Send size={18} className="ml-2" />
-                </button>
+                <div className="pt-2">
+                  <button 
+                    type="submit" 
+                    className="btn-gradient px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center w-full transition-transform duration-300 hover:scale-105"
+                  >
+                    Send Message <Send size={18} className="ml-2" />
+                  </button>
+                </div>
+                
+                <p className="text-xs text-center text-nexora-gray mt-4">
+                  By submitting this form, you agree to our <a href="#" className="text-nexora-blue hover:underline">Privacy Policy</a>.
+                </p>
               </form>
             </div>
           </div>
