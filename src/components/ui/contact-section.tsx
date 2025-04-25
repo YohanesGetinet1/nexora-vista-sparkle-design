@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import.meta
 import { useState } from "react";
 
 export function ContactSection() {
@@ -8,20 +9,65 @@ export function ContactSection() {
     phone: "",
     message: ""
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success?: boolean;
+    message?: string;
+  } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to your backend
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    // Show success message or toast notification
-    alert("Thanks for your message! We'll get back to you soon.");
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY, 
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitStatus({
+          success: true,
+          message: "Thanks for your message! We'll get back to you soon."
+        });
+        // Reset form
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setSubmitStatus({
+          success: false,
+          message: result.message || "Something went wrong. Please try again."
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        success: false,
+        message: "An error occurred. Please try again later."
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 4000);
+    }
   };
 
   return (
@@ -45,33 +91,50 @@ export function ContactSection() {
             </p>
             
             <div className="space-y-4 py-4">
+              {/* Email */}
               <div className="flex items-start space-x-4">
                 <div className="h-10 w-10 rounded-full bg-nexora-blue/10 flex items-center justify-center flex-shrink-0">
                   <Mail size={20} className="text-nexora-blue" />
                 </div>
                 <div>
                   <h4 className="font-medium text-nexora-dark">Email Us</h4>
-                  <p className="text-nexora-gray">contact@nexora.com</p>
+                  <a href="mailto:nexoratechsolution25@gmail.com" className="text-nexora-gray hover:underline">
+                    nexoratechsolution25@gmail.com
+                  </a>
                 </div>
               </div>
-              
+
+              {/* Phone */}
               <div className="flex items-start space-x-4">
                 <div className="h-10 w-10 rounded-full bg-nexora-blue/10 flex items-center justify-center flex-shrink-0">
                   <Phone size={20} className="text-nexora-blue" />
                 </div>
                 <div>
                   <h4 className="font-medium text-nexora-dark">Call Us</h4>
-                  <p className="text-nexora-gray">+1 (555) 123-4567</p>
+                  <a href="tel:+16146223014" className="text-nexora-gray hover:underline">
+                    +1 (614) 622-3014
+                  </a><br />
+                  <a href="tel:+917406635671" className="text-nexora-gray hover:underline">
+                    +91 (740) 663-5671
+                  </a>
                 </div>
               </div>
-              
+
+              {/* Location */}
               <div className="flex items-start space-x-4">
                 <div className="h-10 w-10 rounded-full bg-nexora-blue/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={20} className="text-nexora-blue" />
                 </div>
                 <div>
                   <h4 className="font-medium text-nexora-dark">Visit Us</h4>
-                  <p className="text-nexora-gray">123 Tech Boulevard, Innovation City, CA 94103</p>
+                  <a
+                    href="https://www.google.com/maps/place/Columbus,+Ohio,+USA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-nexora-gray hover:underline"
+                  >
+                    Columbus, Ohio, USA
+                  </a>
                 </div>
               </div>
             </div>
@@ -80,6 +143,12 @@ export function ContactSection() {
           <div className="lg:w-1/2">
             <div className="bg-white dark:bg-nexora-dark/80 rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100 dark:border-gray-800">
               <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
+              
+              {submitStatus && (
+                <div className={`p-4 mb-6 rounded-lg ${submitStatus.success ? 'bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400'}`}>
+                  {submitStatus.message}
+                </div>
+              )}
               
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -151,9 +220,14 @@ export function ContactSection() {
                 <div className="pt-2">
                   <button 
                     type="submit" 
-                    className="btn-gradient px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center w-full transition-transform duration-300 hover:scale-105"
+                    disabled={isSubmitting}
+                    className="btn-gradient px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center w-full transition-transform duration-300 hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message <Send size={18} className="ml-2" />
+                    {isSubmitting ? (
+                      <>Processing...</>
+                    ) : (
+                      <>Send Message <Send size={18} className="ml-2" /></>
+                    )}
                   </button>
                 </div>
                 
